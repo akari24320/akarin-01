@@ -1,10 +1,15 @@
 import Image from "next/image";
 import styles from "./page.module.css";
+import Omikuji from "./components/OmikuziProbability/omikuji"; // ✅ Omikuji をインポート
+
 
 export default function Home() {
   return (
     <div className={styles.page}>
       <main className={styles.main}>
+        
+        <Omikuji />
+
         <Image
           className={styles.logo}
           src="/next.svg"
