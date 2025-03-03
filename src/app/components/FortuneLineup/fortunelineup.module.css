@@ -1,8 +1,8 @@
 .container {
     position: relative;
-  }
-  
-  .button {
+}
+
+.button {
     padding: 10px 20px;
     background-color: #007bff;
     color: white;
@@ -10,13 +10,13 @@
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
-  }
-  
-  .button:hover {
+}
+
+.button:hover {
     background-color: #0056b3;
-  }
-  
-  .overlay {
+}
+
+.overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -26,35 +26,35 @@
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  
-  .modal {
+}
+
+.modal {
     background: white;
     padding: 20px;
     border-radius: 10px;
     text-align: center;
     width: 300px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .title {
+}
+
+.title {
     font-size: 18px;
     font-weight: bold;
     margin-bottom: 15px;
-  }
-  
-  .list {
+}
+
+.list {
     list-style: none;
     padding: 0;
-  }
-  
-  .listItem {
+}
+
+.listItem {
     font-size: 16px;
     color: #333;
     margin: 5px 0;
-  }
-  
-  .closeButton {
+}
+
+.closeButton {
     margin-top: 15px;
     padding: 8px 15px;
     background-color: #dc3545;
@@ -63,9 +63,8 @@
     border-radius: 5px;
     cursor: pointer;
     font-size: 14px;
-  }
-  
-  .closeButton:hover {
+}
+
+.closeButton:hover {
     background-color: #c82333;
-  }
-  
+}

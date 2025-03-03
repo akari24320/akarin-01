@@ -63,6 +63,7 @@ const getRandomDescription = (descriptions: string[]) => {
 
 export default function Omikuji() {
     const [result, setResult] = useState<{ name: string; work: string; love: string; money: string } | null>(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const handleDraw = () => {
         const fortune = getRandomFortune();
@@ -73,6 +74,7 @@ export default function Omikuji() {
                 love: getRandomDescription(fortune.descriptions.love),
                 money: getRandomDescription(fortune.descriptions.money)
             });
+            setIsModalOpen(true);
         }
     };
 
@@ -80,12 +82,15 @@ export default function Omikuji() {
         <div className={styles.test}>
             <h1>おみくじ</h1>
             <button onClick={handleDraw}>おみくじを引く</button>
-            {result && (
-                <div>
-                    <h2>結果: {result.name}</h2>
-                    <p>仕事: {result.work}</p>
-                    <p>恋愛: {result.love}</p>
-                    <p>お金: {result.money}</p>
+            {isModalOpen && result && (
+                <div className={styles.modalOverlay} onClick={() => setIsModalOpen(false)}>
+                    <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+                        <h2>結果: {result.name}</h2>
+                        <p>仕事: {result.work}</p>
+                        <p>恋愛: {result.love}</p>
+                        <p>お金: {result.money}</p>
+                        <button onClick={() => setIsModalOpen(false)}>閉じる</button>
+                    </div>
                 </div>
             )}
         </div>
