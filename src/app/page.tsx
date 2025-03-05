@@ -2,6 +2,7 @@ import Image from "next/image";
 import styles from "./page.module.css";
 import Omikuji from "./components/OmikuziProbability/omikuji"; // ✅ Omikuji をインポート
 import FortuneLineup from "./components/FortuneLineup/fortunelineup";
+import ChiwaiAnimation from "./components/OtherComponents/ChiwaiAnimation";
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
         
         <FortuneLineup />
         <Omikuji />
+        <ChiwaiAnimation/>
 
         <Image
           className={styles.logo}
