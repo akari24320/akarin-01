@@ -12,7 +12,6 @@ export default function Home() {
         <FortuneLineup />
         <Omikuji />
         <ChiwaiAnimation/>
-
         <Image
           className={styles.logo}
           src="/next.svg"

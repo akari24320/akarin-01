@@ -1,0 +1,172 @@
+.page{
+    display: flex;
+    flex-direction: column; /* 縦に並べる */
+    align-items: center; /* 水平方向（左右）の中央揃え */
+    background: rgb(189, 164, 164);
+}
+
+.omikuji{
+    display: flex;
+    flex-direction: column; /* 縦に並べる */
+    align-items: center;
+    width: 394px;
+    height: 1394.973px;
+    flex-shrink: 0;
+    background-color: #F8F7F1;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    font-family: "Shippori Mincho";
+}
+
+.number{
+    position: relative; /* SVG を重ねるための基準点 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 330.108px;
+    height: 35.495px;
+    padding-top: 43px;
+    padding-bottom: 16px;
+}
+
+
+.backgroundSvg {
+    position: absolute; /* 裏側に配置 */
+    width: 100%;
+    height: 100%;
+    z-index: -0.5; /* `p` の背面に配置 */
+}
+
+.number p {
+    position: relative; /* SVG の上に表示するため */
+    color: #F8F7F1;
+    font-size: 24px;
+    letter-spacing: 9.6px;
+}
+
+.title{
+    color: #A10C0C;
+    text-align: center;
+    font-family: "Shippori Mincho";
+    font-size: 72px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.fortunetable{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 17px;
+    border: 8px solid #A10C0C;
+    width: 330.108px;
+    height: 1164.252px;
+    flex-shrink: 0;
+}
+
+.fortunetable2{
+    width: 301.712px;
+    height: 1135.856px;
+    flex-shrink: 0;
+    border: 4px solid #A10C0C;
+}
+
+.fotunename{
+    padding-top: 13.75px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #A10C0C;
+    flex-shrink: 0;
+    color: #A10C0C;
+    text-align: center;
+    font-size: 60px;
+    line-height: 60px; /* 100% */
+}
+
+.entirediscription{
+    display: flex;
+    justify-content: center;
+    flex-shrink: 0;
+    padding-bottom: 28px;
+    border-bottom: 2px solid #A10C0C;
+}
+
+.entirediscription2{
+    padding-top: 18px;
+    width: 130.92px;
+    height: 262.67px;
+    display: flex;
+    justify-content: center;
+}
+
+.entirediscription2 p {
+    width: 39.045px;
+    height: 262.667px;
+    flex-shrink: 0;
+    color: #A10C0C;
+    text-align: center;
+    font-family: "Shippori Mincho";
+    font-size: 28px;
+    line-height: 28px; /* 100% */
+}
+
+.discriptions{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #A10C0C;
+}
+
+.discriptions2{
+    padding-top: 18px;
+    width: 263px;
+    display: flex;
+    justify-content: center;
+}
+
+.discriptions strong{
+    width: 37.339px;
+    height: 450.793px;
+    flex-shrink: 0;
+    color: #A10C0C;
+    text-align: center;
+    font-size: 28px;
+    line-height: 28px; /* 100% */
+    font-weight: lighter;
+}
+
+.discriptions p{
+    width: 37.339px;
+    height: 450.793px;
+    flex-shrink: 0;
+    color: #000000;
+    text-align: center;
+    font-size: 28px;
+    line-height: 28px; /* 100% */
+    margin-left: 3.8px;
+    margin-right: 3.8px;
+}
+
+.comfirm{
+    padding-top: 42px;
+    display: flex;
+    justify-content: center;
+    flex-shrink: 0;
+    padding-bottom: 22px;
+}
+
+.confirm2{
+    position: relative;
+    width: 177.749px;
+    height: 177.749px;
+}
+
+.backgroundSvg2{
+    z-index: -0.5; /* `p` の背面に配置 */
+}
+
+.comfirm p{
+    position: relative; /* SVG の上に表示するため */
+    color: rgba(161, 12, 12, 0.30);
+    font-size: 24px;
+    letter-spacing: 9.6px;
+}

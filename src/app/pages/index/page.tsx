@@ -1,11 +1,13 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { getRandomFortune, getRandomDescription } from ".././../utils/FortunesDate";
+import { getNumber } from ".././../utils/OmikujiNumber"
 
 export default function Home() {
     const router = useRouter();
 
     const handleClick = () => {
+        const number = getNumber();
         const fortune = getRandomFortune();
         if (!fortune) return;
 
@@ -18,7 +20,7 @@ export default function Home() {
         const health = getRandomDescription(fortune.descriptions.health);
 
         // クエリパラメータを使って渡す
-        router.push(`/pages/result?name=${fortune.name}&wish=${wish}&work=${work}&lost=${lost}&love=${love}&money=${money}&health=${health}`);
+        router.push(`/pages/result?number=${number}&name=${fortune.name}&wish=${wish}&work=${work}&lost=${lost}&love=${love}&money=${money}&health=${health}`);
     };
 
     return (
