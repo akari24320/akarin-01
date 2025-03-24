@@ -1,7 +1,5 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { getRandomFortune, getRandomDescription } from ".././../utils/FortunesDate";
-import { getNumber } from ".././../utils/OmikujiNumber"
 import FortuneLineup from ".././../components/FortuneLineup/fortunelineup";
 
 export default function Home() {

@@ -1,17 +1,15 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import html2canvas from "html2canvas";
-import { getRandomFortune, getRandomDescription } from ".././../utils/FortunesDate";
-import { getNumber } from ".././../utils/OmikujiNumber"
-import styles from "./page.module.css"
+import { getRandomFortune, getRandomDescription } from "../../utils/FortunesDate";
+import { getNumber } from "../../utils/OmikujiNumber";
+import styles from "./page.module.css";
 
 export default function Result() {
-
     const router = useRouter();
     const omikujiRef = useRef<HTMLDivElement>(null);
 
-    // 初回は検索パラメータから取得し、再抽選時は useState で更新
     const [fortune, setFortune] = useState({
         number: "",
         name: "",
@@ -23,11 +21,32 @@ export default function Result() {
         health: "",
     });
 
-    useEffect(() => {
-        drawNewFortune();
+    const [entireDescription, setEntireDescription] = useState(["", "", ""]);
+
+    const generateEntireDescription = useCallback(async (fortuneData: typeof fortune) => {
+        const response = await fetch("/api/generateFortuneDescription", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                fortune: fortuneData.name,
+                wish: fortuneData.wish,
+                work: fortuneData.work,
+                lost: fortuneData.lost,
+                love: fortuneData.love,
+                money: fortuneData.money,
+                health: fortuneData.health,
+            }),
+        });
+
+        const data = await response.json();
+        if (data.generatedText) {
+            setEntireDescription(data.generatedText.split("\n"));
+        }
     }, []);
 
-    const drawNewFortune = () => {
+    const drawNewFortune = useCallback(async () => {
         const newnumber = getNumber();
         const newFortune = getRandomFortune();
         const newwish = getRandomDescription(newFortune.descriptions.wish);
@@ -37,8 +56,7 @@ export default function Result() {
         const newMoney = getRandomDescription(newFortune.descriptions.money);
         const newhealth = getRandomDescription(newFortune.descriptions.health);
 
-        // 新しい結果を state にセット
-        setFortune({
+        const fortuneData = {
             number: newnumber,
             name: newFortune.name,
             wish: newwish,
@@ -47,9 +65,15 @@ export default function Result() {
             love: newLove,
             money: newMoney,
             health: newhealth,
-        });
+        };
 
-    };
+        setFortune(fortuneData);
+        await generateEntireDescription(fortuneData);
+    }, [generateEntireDescription]);
+
+    useEffect(() => {
+        drawNewFortune();
+    }, [drawNewFortune]);
 
     const saveAsImage = async () => {
         if (!omikujiRef.current) return;
@@ -58,7 +82,7 @@ export default function Result() {
             backgroundColor: "#fff",
             foreignObjectRendering: false,
         });
-        
+
         const dataURL = canvas.toDataURL("image/png");
 
         const link = document.createElement("a");
@@ -69,11 +93,8 @@ export default function Result() {
 
     return (
         <div className={styles.page}>
-
             <h1>おみくじ結果</h1>
-
             <div ref={omikujiRef} className={styles.omikuji}>
-                
                 <div className={styles.number}>
                     <svg className={styles.backgroundSvg} xmlns="http://www.w3.org/2000/svg" width="332" height="36" viewBox="0 0 332 36" fill="none">
                         <path d="M16.9707 0.495483H315.029L331.054 18.2432L315.029 35.991H16.9707L0.946045 18.2432L16.9707 0.495483Z" fill="#A10C0C"/>
@@ -89,9 +110,9 @@ export default function Result() {
                         <h1 className={styles.fotunename}>{fortune.name}</h1>
                         <div className={styles.entirediscription}>
                             <div className={styles.entirediscription2}>
-                                <p>くまのすけ</p>
-                                <p>財務のくましゃん</p>
-                                <p>細き道こそ確かなる</p>
+                                {entireDescription.map((line, index) => (
+                                    <p key={index}>{line}</p>
+                                ))}
                             </div>
                         </div>
                         <div className={styles.discriptions}>
@@ -101,7 +122,7 @@ export default function Result() {
                                 <p><strong>恋愛 ‥</strong> {fortune.love}</p>
                                 <p><strong>失物 ‥</strong> {fortune.lost}</p>
                                 <p><strong>仕事 ‥</strong> {fortune.work}</p>
-                                <p><strong>願事 ‥</strong> {fortune.wish}</p> 
+                                <p><strong>願事 ‥</strong> {fortune.wish}</p>
                             </div>
                         </div>
                         <div className={styles.comfirm}>
@@ -117,14 +138,13 @@ export default function Result() {
                     </div>
                 </div>
             </div>
-
             <button
                 onClick={() => {
                     drawNewFortune();
-                    window.scrollTo({ top: 0, behavior: "smooth" })
+                    window.scrollTo({ top: 0, behavior: "smooth" });
                 }}
-                >
-                    もう一度引く
+            >
+                もう一度引く
             </button>
             <button onClick={saveAsImage}>画像として保存</button>
             <button onClick={() => router.push("/pages/index")}>最初に戻る</button>
