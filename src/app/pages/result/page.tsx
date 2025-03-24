@@ -1,5 +1,5 @@
 "use client";
-import { useSearchParams, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 import html2canvas from "html2canvas";
 import { getRandomFortune, getRandomDescription } from ".././../utils/FortunesDate";
@@ -8,28 +8,24 @@ import styles from "./page.module.css"
 
 export default function Result() {
 
-    const searchParams = useSearchParams();
     const router = useRouter();
     const omikujiRef = useRef<HTMLDivElement>(null);
 
     // 初回は検索パラメータから取得し、再抽選時は useState で更新
     const [fortune, setFortune] = useState({
-        number: searchParams.get("number") || "",
-        name: searchParams.get("name") || "",
-        wish: searchParams.get("wish") || "",
-        work: searchParams.get("work") || "",
-        lost: searchParams.get("lost") || "",
-        love: searchParams.get("love") || "",
-        money: searchParams.get("money") || "",
-        health: searchParams.get("health") || "",
+        number: "",
+        name: "",
+        wish: "",
+        work: "",
+        lost: "",
+        love: "",
+        money: "",
+        health: "",
     });
 
     useEffect(() => {
-        // クエリパラメータが空なら、新しいおみくじを引く
-        if (!fortune.name) {
-            drawNewFortune();
-        }
-    },);
+        drawNewFortune();
+    }, []);
 
     const drawNewFortune = () => {
         const newnumber = getNumber();
