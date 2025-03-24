@@ -28,6 +28,7 @@ const FortuneLineup = () => {
                 </li>
               ))}
             </ul>
+            <p className={styles.kyo}>狂</p>
           </div>
         </div>
       )}
