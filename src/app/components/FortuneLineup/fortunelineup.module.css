@@ -53,6 +53,10 @@
     margin: 5px 0;
 }
 
+.kyo{
+    color: rgba(0, 0, 0, 0.06);
+}
+
 .closeButton {
     margin-top: 15px;
     padding: 8px 15px;
