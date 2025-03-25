@@ -148,16 +148,17 @@ export default function Result() {
                     </div>
                 </div>
             </div>
-            <button
-                className={styles.return}
-                onClick={() => {
-                    handleReset(); 
-                    drawNewFortune();
-                    window.scrollTo({ top: 0, behavior: "smooth" });
-                }}
-            >
-                もう一度引く
-            </button>
+            <div className={styles.return}>
+                <button
+                    onClick={() => {
+                        handleReset(); 
+                        drawNewFortune();
+                        window.scrollTo({ top: 0, behavior: "smooth" });
+                    }}
+                >
+                    もう一度引く
+                </button>
+            </div>
             <button onClick={saveAsImage}>画像として保存</button>
             <button onClick={() => router.push("/pages/index")}>最初に戻る</button>
         </div>
