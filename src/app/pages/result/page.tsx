@@ -22,30 +22,30 @@ export default function Result() {
         health: "",
     });
 
-    const [entireDescription, setEntireDescription] = useState(["", "", ""]);
+    const entireDescription = ["ああああ", "いいいいいいい", "うううううう"];
 
-    const generateEntireDescription = useCallback(async (fortuneData: typeof fortune) => {
-        const response = await fetch("/api/generateFortuneDescription", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                fortune: fortuneData.name,
-                wish: fortuneData.wish,
-                work: fortuneData.work,
-                lost: fortuneData.lost,
-                love: fortuneData.love,
-                money: fortuneData.money,
-                health: fortuneData.health,
-            }),
-        });
+    // const generateEntireDescription = useCallback(async (fortuneData: typeof fortune) => {
+    //     const response = await fetch("/api/generateFortuneDescription", {
+    //         method: "POST",
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //         },
+    //         body: JSON.stringify({
+    //             fortune: fortuneData.name,
+    //             wish: fortuneData.wish,
+    //             work: fortuneData.work,
+    //             lost: fortuneData.lost,
+    //             love: fortuneData.love,
+    //             money: fortuneData.money,
+    //             health: fortuneData.health,
+    //         }),
+    //     });
 
-        const data = await response.json();
-        if (data.generatedText) {
-            setEntireDescription(data.generatedText.split("\n"));
-        }
-    }, []);
+    //     const data = await response.json();
+    //     if (data.generatedText) {
+    //         setEntireDescription(data.generatedText.split("\n"));
+    //     }
+    // }, []);
 
     const drawNewFortune = useCallback(async () => {
         const newnumber = getNumber();
@@ -69,8 +69,8 @@ export default function Result() {
         };
 
         setFortune(fortuneData);
-        await generateEntireDescription(fortuneData);
-    }, [generateEntireDescription]);
+        // await generateEntireDescription(fortuneData);
+    }, []);
 
     useEffect(() => {
         drawNewFortune();
