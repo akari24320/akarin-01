@@ -16,19 +16,21 @@ const FortuneLineup = () => {
 
       {isOpen && ( //この&&は、条件がtrueの時だけ表示させるために
         <div className={styles.overlay}>
-          <div className={styles.closebutton}>
-            <button onClick={() => setIsOpen(false)}>閉じる</button>
-          </div>
-          <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
-            <h2 className={styles.title}>運勢一覧</h2>
-            <ul className={styles.list}>
-              {fortunes.map((fortune, index) => (
-                <li key={index} className={styles.listItem}>
-                  {fortune}
-                </li>
-              ))}
-            </ul>
-            <p className={styles.kyo}>狂</p>
+          <div className={styles.layout}>
+            <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
+              <h2 className={styles.title}>運勢一覧</h2>
+              <ul className={styles.list}>
+                {fortunes.map((fortune, index) => (
+                  <li key={index} className={styles.listItem}>
+                    {fortune}
+                  </li>
+                ))}
+              </ul>
+              <p className={styles.kyo}>狂</p>
+            </div>
+            <div className={styles.closebutton}>
+              <button onClick={() => setIsOpen(false)}>閉じる</button>
+            </div>
           </div>
         </div>
       )}
