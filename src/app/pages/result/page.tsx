@@ -6,6 +6,7 @@ import { getRandomFortune, getRandomDescription } from "../../utils/FortunesDate
 import { getNumber } from "../../utils/OmikujiNumber";
 import styles from "./page.module.css";
 import ConfirmStamps from "@/app/components/ConfirmStamps/ConfirmStamps";
+import { getEntireDiscription } from "../../utils/getEntireDiscription";
 
 export default function Result() {
     const router = useRouter();
@@ -22,7 +23,7 @@ export default function Result() {
         health: "",
     });
 
-    const entireDescription = ["ああああ", "いいいいいいい", "うううううう"];
+    const [entireDescription, setEntireDescription] = useState<string[]>([]);
 
     // const generateEntireDescription = useCallback(async (fortuneData: typeof fortune) => {
     //     const response = await fetch("/api/generateFortuneDescription", {
@@ -70,6 +71,7 @@ export default function Result() {
 
         setFortune(fortuneData);
         // await generateEntireDescription(fortuneData);
+        setEntireDescription(getEntireDiscription()); // 1行、2行、3行からランダム取得
     }, []);
 
     useEffect(() => {
@@ -111,11 +113,11 @@ export default function Result() {
                     <div className={styles.fortunetable2}>
                         <h1 className={styles.fotunename}>{fortune.name}</h1>
                         <div className={styles.entirediscription}>
-                            <div className={styles.entirediscription2}>
-                                {entireDescription.map((line, index) => (
-                                    <p key={index}>{line}</p>
-                                ))}
-                            </div>
+                        <div className={styles.entirediscription2}>
+                            {entireDescription.map((line, index) => (
+                                <p key={index}>{line}</p>
+                            ))}
+                        </div>
                         </div>
                         <div className={styles.discriptions}>
                             <div className={styles.discriptions2}>
