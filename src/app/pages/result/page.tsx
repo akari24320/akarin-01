@@ -7,6 +7,7 @@ import { getNumber } from "../../utils/OmikujiNumber";
 import styles from "./page.module.css";
 import ConfirmStamps from "@/app/components/ConfirmStamps/ConfirmStamps";
 import { getEntireDiscription } from "../../utils/getEntireDiscription";
+import Header from "../../components/Header/Header";
 
 export default function Result() {
     const router = useRouter();
@@ -100,61 +101,64 @@ export default function Result() {
     };
 
     return (
-        <div className={styles.page}>
-            <h1>おみくじ結果</h1>
-            <div ref={omikujiRef} className={styles.omikuji}>
-                <div className={styles.number}>
-                    <img src="/number.svg" alt="My Icon" className={styles.backgroundSvg} />
-                    <p>{fortune.number}</p>
-                </div>
-                <p className={styles.title}>おみくじ</p>
-                <img src="/yazirusi.svg" alt="My Icon"/>
-                <div className={styles.fortunetable}>
-                    <div className={styles.fortunetable2}>
-                        <h1 className={styles.fotunename}>{fortune.name}</h1>
-                        <div className={styles.entirediscription}>
-                        <div className={styles.entirediscription2}>
-                            {entireDescription.map((line, index) => (
-                                <p key={index}>{line}</p>
-                            ))}
-                        </div>
-                        </div>
-                        <div className={styles.discriptions}>
-                            <div className={styles.discriptions2}>
-                                <p><strong>健康 ‥</strong> {fortune.health}</p>
-                                <p><strong>金銭 ‥</strong> {fortune.money}</p>
-                                <p><strong>恋愛 ‥</strong> {fortune.love}</p>
-                                <p><strong>失物 ‥</strong> {fortune.lost}</p>
-                                <p><strong>仕事 ‥</strong> {fortune.work}</p>
-                                <p><strong>願事 ‥</strong> {fortune.wish}</p>
+        <div>
+            <Header/>
+            <div className={styles.page}>
+                <h1 className={styles.resulthead}>おみくじ結果</h1>
+                <div ref={omikujiRef} className={styles.omikuji}>
+                    <div className={styles.number}>
+                        <img src="/number.svg" alt="My Icon" className={styles.backgroundSvg} />
+                        <p>{fortune.number}</p>
+                    </div>
+                    <p className={styles.title}>おみくじ</p>
+                    <img src="/yazirusi.svg" alt="My Icon"/>
+                    <div className={styles.fortunetable}>
+                        <div className={styles.fortunetable2}>
+                            <h1 className={styles.fotunename}>{fortune.name}</h1>
+                            <div className={styles.entirediscription}>
+                            <div className={styles.entirediscription2}>
+                                {entireDescription.map((line, index) => (
+                                    <p key={index}>{line}</p>
+                                ))}
                             </div>
-                        </div>
-                        <div className={styles.comfirm}>
-                            <div className={styles.comfirm2}>
-                            <img src="/confirm.svg" alt="My Icon" />
                             </div>
-                        </div>
-                        <div className={styles.stamps}>
-                            <div className={styles.stamps2}>
-                                <ConfirmStamps resetTrigger={resetTrigger} ></ConfirmStamps>
+                            <div className={styles.discriptions}>
+                                <div className={styles.discriptions2}>
+                                    <p><strong>健康 ‥</strong> {fortune.health}</p>
+                                    <p><strong>金銭 ‥</strong> {fortune.money}</p>
+                                    <p><strong>恋愛 ‥</strong> {fortune.love}</p>
+                                    <p><strong>失物 ‥</strong> {fortune.lost}</p>
+                                    <p><strong>仕事 ‥</strong> {fortune.work}</p>
+                                    <p><strong>願事 ‥</strong> {fortune.wish}</p>
+                                </div>
+                            </div>
+                            <div className={styles.comfirm}>
+                                <div className={styles.comfirm2}>
+                                <img src="/confirm.svg" alt="My Icon" />
+                                </div>
+                            </div>
+                            <div className={styles.stamps}>
+                                <div className={styles.stamps2}>
+                                    <ConfirmStamps resetTrigger={resetTrigger} ></ConfirmStamps>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <div className={styles.return}>
+                    <button
+                        onClick={() => {
+                            handleReset(); 
+                            drawNewFortune();
+                            window.scrollTo({ top: 0, behavior: "smooth" });
+                        }}
+                    >
+                        もう一度引く
+                    </button>
+                </div>
+                <button className={styles.buttonA} onClick={saveAsImage}>画像として保存</button>
+                <button className={styles.buttonB} onClick={() => router.push("/pages/index")}>最初に戻る</button>
             </div>
-            <div className={styles.return}>
-                <button
-                    onClick={() => {
-                        handleReset(); 
-                        drawNewFortune();
-                        window.scrollTo({ top: 0, behavior: "smooth" });
-                    }}
-                >
-                    もう一度引く
-                </button>
-            </div>
-            <button onClick={saveAsImage}>画像として保存</button>
-            <button onClick={() => router.push("/pages/index")}>最初に戻る</button>
         </div>
     );
 }

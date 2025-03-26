@@ -10,8 +10,8 @@ const FortuneLineup = () => {
 
   return (
     <div>
-      <button onClick={() => setIsOpen(true)}>
-        運勢一覧
+      <button className={styles.mainbutton} onClick={() => setIsOpen(true)}>
+        運勢一覧を見る
       </button>
 
       {isOpen && ( //この&&は、条件がtrueの時だけ表示させるために
