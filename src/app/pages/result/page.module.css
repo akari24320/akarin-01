@@ -5,6 +5,10 @@
     background: rgb(189, 164, 164);
 }
 
+.resulthead{
+    color: #F8F7F1;
+}
+
 .omikuji{
     display: flex;
     flex-direction: column; /* 縦に並べる */
@@ -176,7 +180,52 @@
 }
 
 .return button{
-    height: 100px;
-    width: 200px;
     background-color: #A10C0C;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 32px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 20px;
+    transition: background 0.3s;
+}
+
+.buttonA{
+    background-color: #A10C0C;
+    color: white;
+    border: none;
+    width: 160px;
+    padding: 12px 24px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 20px;
+    transition: background 0.3s;
+}
+
+.buttonB{
+    background-color: #A10C0C;
+    color: white;
+    border: none;
+    width: 160px;
+    padding: 12px 24px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 20px;
+    transition: background 0.3s;
+    margin-bottom: 30px;
+}
+
+.return button:hover{
+    background-color: #860a0a;
+}
+
+.buttonA:hover{
+    background-color: #860a0a;
+}
+
+.buttonB:hover{
+    background-color: #860a0a;
 }

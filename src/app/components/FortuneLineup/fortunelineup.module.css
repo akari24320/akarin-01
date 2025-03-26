@@ -1,5 +1,21 @@
+.mainbutton{
+    background-color: #A10C0C;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 20px;
+    transition: background 0.3s;
+}
+
+.mainbutton:hover{
+    background-color: #860a0a;
+}
+
 .button:hover {
-    background-color: #0056b3;
+    background-color: #860a0a;
 }
 
 .overlay {
@@ -15,17 +31,19 @@
 }
 
 .closebutton button{
-    padding: 10px 20px;
-    color: rgb(255, 255, 255);
-    background-color: #c82333;
+    background-color: #A10C0C;
+    color: white;
     border: none;
-    border-radius: 5px;
+    padding: 12px 24px;
+    font-size: 18px;
     cursor: pointer;
-    font-size: 16px;
+    border-radius: 5px;
+    margin-top: 20px;
+    transition: background 0.3s;
 }
 
 .closebutton button:hover {
-    background-color: #0056b3;
+    background-color: #860a0a;
 }
 
 .modal {
